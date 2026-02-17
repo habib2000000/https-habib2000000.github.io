@@ -2,118 +2,123 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>منصة الشامل - بهجة رمضان</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Joy with AI | Pi Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --pi-color: #541d72;
+            --ramadan-gold: #ffd700;
+            --ramadan-red: #8e0e14;
+        }
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #5d1015; /* لون أحمر رمضاني دافئ */
-            background-image: url('https://www.transparenttextures.com/patterns/islamic-art.png');
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
+        /* بهجة رمضان في الأعلى */
         .ramadan-header {
-            background: linear-gradient(to bottom, #d4af37, #aa8418); /* لون ذهبي */
-            color: #5d1015;
-            padding: 20px;
+            background: linear-gradient(45deg, var(--ramadan-red), #5d1015);
+            color: var(--ramadan-gold);
             text-align: center;
-            border-bottom: 5px solid #8e0e14;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: -30px auto 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            position: relative;
+        .main-card {
+            max-width: 450px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 30px;
         }
-        .lantern {
-            font-size: 40px;
-            position: absolute;
-            top: -20px;
-            animation: swing 2s infinite ease-in-out;
+        .app-logo-area {
+            background: var(--pi-color);
+            padding: 40px 20px;
+            color: white;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
         }
-        @keyframes swing {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
-        }
-        .stats-box {
+        .stats-row {
             display: flex;
             justify-content: space-around;
-            margin-top: 25px;
-            border-top: 2px dashed #d4af37;
-            padding-top: 20px;
+            margin: 20px 0;
+            background: #fff9e6;
+            padding: 10px;
         }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-number {
-            display: block;
-            font-size: 24px;
-            font-weight: bold;
-            color: #8e0e14;
-        }
-        .btn-ramadan {
-            background: #8e0e14;
+        .btn-enter {
+            background: linear-gradient(to left, var(--pi-color), #7a28a3);
             color: white;
-            padding: 12px 30px;
             border: none;
-            border-radius: 25px;
+            padding: 15px 40px;
+            border-radius: 30px;
             font-weight: bold;
+            width: 80%;
+            margin-bottom: 15px;
             cursor: pointer;
-            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        /* زر الـ Skipping / التصفح */
+        .btn-skip {
+            background: transparent;
+            color: var(--pi-color);
+            border: 2px solid var(--pi-color);
+            padding: 10px 40px;
+            border-radius: 30px;
+            font-weight: bold;
+            width: 80%;
+            cursor: pointer;
             text-decoration: none;
+            display: inline-block;
         }
-        .btn-ramadan:hover {
-            background: #d4af37;
-            color: #5d1015;
-        }
-        .footer {
-            text-align: center;
-            color: #ffd700;
+        .footer-info {
+            font-size: 0.8rem;
+            color: #888;
             margin-top: 20px;
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <div class="ramadan-header">
-        <div class="lantern" style="right: 20px;">🏮</div>
-        <div class="lantern" style="left: 20px;">🏮</div>
-        <h1>🌙 رمضان كريم وكل عام وأنتم بخير</h1>
-        <p>متبقي 39 يوم على الشهر الفضيل - أعاده الله علينا وعليكم بالخير واليمن والبركات</p>
+        🌙 متبقي 39 يوم على شهر الخير <br>
+        <strong>رمضان كريم وكل عام وأنتم بخير</strong>
     </div>
 
-    <div class="container">
-        <h2 style="color: #8e0e14; text-align: center;">منصة الشامل - متعة التعلم مع AI</h2>
-        <p style="text-align: center;">أهلاً بك يا بطل في النسخة الرمضانية الخاصة. استرجع كودك وابدأ رحلة التعلم الآن.</p>
-        
-        <div style="text-align: center; margin: 30px 0;">
-            <input type="text" placeholder="أدخل بريدك الإلكتروني هنا..." style="padding: 12px; width: 60%; border-radius: 25px; border: 1px solid #ddd;">
-            <br><br>
-            <button class="btn-ramadan">استرجاع كود التعلم ✨</button>
+    <div class="main-card">
+        <div class="app-logo-area">
+            <h1 style="margin:0;">Learning Joy AI</h1>
+            <small>Official Pi Network Ecosystem App</small>
         </div>
 
-        <div class="stats-box">
-            <div class="stat-item">
-                <span class="stat-number">3M+</span>
-                <small>طالب نشط</small>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">1000+</span>
-                <small>محتوى تفاعلي</small>
-            </div>
+        <div class="stats-row">
+            <div><strong>3M+</strong><br><small>طالب نشط</small></div>
+            <div><strong>1000+</strong><br><small>محتوى تعليمي</small></div>
         </div>
-    </div>
 
-    <div class="footer">
-        تطوير المبدع: habib2000000 | جيش رواد PI network
+        <div style="padding: 20px;">
+            <p>مرحباً بك في مدخل التطبيق الرسمي</p>
+            
+            <button class="btn-enter" onclick="location.href='https://aibcbecb7115.pinet.com/login'">
+                تسجيل الدخول بالكود 🔐
+            </button>
+
+            <a href="https://aibcbecb7115.pinet.com/explore" class="btn-skip">
+                تخطي وتصفح التطبيق ⬅️
+            </a>
+        </div>
+
+        <div class="footer-info">
+            بواسطة: habib2000000 <br>
+            جيش رواد PI network
+        </div>
     </div>
 
 </body>
 </html>
-
