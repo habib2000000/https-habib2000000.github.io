@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>منصة الشامل - بهجة رمضان</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #5d1015; /* لون أحمر رمضاني دافئ */
+            background-image: url('https://www.transparenttextures.com/patterns/islamic-art.png');
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .ramadan-header {
+            background: linear-gradient(to bottom, #d4af37, #aa8418); /* لون ذهبي */
+            color: #5d1015;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #8e0e14;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: -30px auto 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .lantern {
+            font-size: 40px;
+            position: absolute;
+            top: -20px;
+            animation: swing 2s infinite ease-in-out;
+        }
+        @keyframes swing {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        .stats-box {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25px;
+            border-top: 2px dashed #d4af37;
+            padding-top: 20px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            color: #8e0e14;
+        }
+        .btn-ramadan {
+            background: #8e0e14;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .btn-ramadan:hover {
+            background: #d4af37;
+            color: #5d1015;
+        }
+        .footer {
+            text-align: center;
+            color: #ffd700;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ramadan-header">
+        <div class="lantern" style="right: 20px;">🏮</div>
+        <div class="lantern" style="left: 20px;">🏮</div>
+        <h1>🌙 رمضان كريم وكل عام وأنتم بخير</h1>
+        <p>متبقي 39 يوم على الشهر الفضيل - أعاده الله علينا وعليكم بالخير واليمن والبركات</p>
+    </div>
+
+    <div class="container">
+        <h2 style="color: #8e0e14; text-align: center;">منصة الشامل - متعة التعلم مع AI</h2>
+        <p style="text-align: center;">أهلاً بك يا بطل في النسخة الرمضانية الخاصة. استرجع كودك وابدأ رحلة التعلم الآن.</p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <input type="text" placeholder="أدخل بريدك الإلكتروني هنا..." style="padding: 12px; width: 60%; border-radius: 25px; border: 1px solid #ddd;">
+            <br><br>
+            <button class="btn-ramadan">استرجاع كود التعلم ✨</button>
+        </div>
+
+        <div class="stats-box">
+            <div class="stat-item">
+                <span class="stat-number">3M+</span>
+                <small>طالب نشط</small>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1000+</span>
+                <small>محتوى تفاعلي</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        تطوير المبدع: habib2000000 | جيش رواد PI network
+    </div>
+
+</body>
+</html>
 
