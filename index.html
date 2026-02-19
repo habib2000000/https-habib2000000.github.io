@@ -3,101 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Joy with AI - Official Entry</title>
+    <title>Learning Joy with AI - Official</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --pi-purple: #541d72; 
-            --ramadan-red: #8e0e14; 
-            --gold: #ffd700; 
-            --light-bg: #f8f9fa;
-        }
-
+        :root { --pi-purple: #541d72; --ramadan-red: #8e0e14; --gold: #ffd700; }
         body { 
-            font-family: 'Cairo', sans-serif; 
-            background-color: var(--light-bg); 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
-            padding: 20px 0;
+            font-family: 'Cairo', sans-serif; background-color: #f8f9fa; 
+            margin: 0; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; min-height: 100vh; 
+            overflow: hidden;
         }
-        
-        /* شريط رمضان العلوي */
         .ramadan-banner { 
-            position: fixed; 
-            top: 0; width: 100%; 
-            background: var(--ramadan-red); 
-            color: var(--gold); 
-            padding: 12px; 
-            text-align: center; 
-            font-weight: bold; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
+            position: fixed; top: 0; width: 100%; background: var(--ramadan-red); 
+            color: var(--gold); padding: 12px; text-align: center; font-weight: bold; z-index: 1000;
         }
-
         .main-card { 
-            width: 90%; 
-            max-width: 400px; 
-            background: white; 
-            border-radius: 30px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-            overflow: hidden; 
-            text-align: center; 
-            margin-top: 60px; /* لترك مساحة للبانر */
+            width: 90%; max-width: 400px; background: white; border-radius: 30px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; text-align: center; 
         }
-
-        .hero-area { 
-            background: var(--pi-purple); 
-            color: white; 
-            padding: 40px 20px; 
-            border-bottom-left-radius: 60px; 
-            border-bottom-right-radius: 60px; 
-        }
-
-        .btn-container { padding: 30px 20px; }
-
+        .hero-area { background: var(--pi-purple); color: white; padding: 40px 20px; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; }
+        .btn-container { padding: 40px 20px; }
         .btn-main { 
-            display: block; 
-            width: 100%; 
-            background: linear-gradient(45deg, #bc13fe, #7a01bb); 
-            color: white; 
-            text-decoration: none; 
-            padding: 18px; 
-            border-radius: 40px; 
-            font-size: 1.3rem; 
-            font-weight: bold; 
+            display: block; width: 100%; background: linear-gradient(45deg, #bc13fe, #7a01bb); 
+            color: white; text-decoration: none; padding: 20px; border-radius: 40px; 
+            font-size: 1.4rem; font-weight: bold; transition: 0.3s; border: none; cursor: pointer;
             box-shadow: 0 8px 20px rgba(122, 1, 187, 0.3);
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 15px;
         }
-
-        .btn-main:hover { transform: translateY(-3px); }
-        .btn-main:active { transform: scale(0.95); }
-
-        /* مشغل الصوت */
-        .audio-section {
-            background: #eee;
-            margin: 0 20px 20px;
-            padding: 15px;
-            border-radius: 20px;
-        }
+        .footer { padding: 20px; font-size: 0.8rem; color: #777; }
         
-        audio { width: 100%; height: 35px; }
-
-        .footer { 
-            padding: 20px; 
-            font-size: 0.85rem; 
-            color: #777; 
-            line-height: 1.6;
-        }
+        /* إخفاء مشغل الصوت ليبدو التطبيق احترافياً */
+        #myAudio { display: none; }
     </style>
 </head>
-<body>
+<body onclick="startApp()">
 
     <div class="ramadan-banner">
         🌙 رمضان كريم - متبقي 39 يوم على الشهر الفضيل
@@ -105,31 +43,47 @@
 
     <div class="main-card">
         <div class="hero-area">
-            <h1 style="margin:0; font-size: 2rem;">Learning Joy AI</h1>
-            <p style="opacity: 0.9; margin-top: 5px;">Official Pi Network App</p>
+            <h1 style="margin:0;">Learning Joy AI</h1>
+            <p style="margin:5px 0 0;">Official Pi Network App</p>
         </div>
 
         <div class="btn-container">
-            <p style="color: #666; margin-bottom: 20px;">أهلاً بك في تطبيق الإيكوسيستيم الرسمي</p>
-            
-            <a href="https://aibcbecb7115.pinet.com/" class="btn-main">
-                دخول التطبيق الفعلي 🚀
-            </a>
-        </div>
-
-        <div class="audio-section">
-            <p style="margin: 0 0 10px; font-size: 0.9rem; color: #555;">استمع إلى: Welcome Ramadan</p>
-            <audio controls>
-                <source src="Welcome_Ramadan.mp3" type="audio/mpeg">
-                متصفحك لا يدعم تشغيل الصوت.
-            </audio>
+            <p style="color: #666; margin-bottom: 25px;">انقر في أي مكان لتفعيل النظام والدخول</p>
+            <button class="btn-main" onclick="startApp()">
+                دخول التطبيق 🚀
+            </button>
         </div>
 
         <div class="footer">
-            تطوير: **habib2000000** <br>
-            جيش رواد PI network ⚡
+            تطوير: habib2000000 <br>
+            جيش رواد PI network
         </div>
     </div>
+
+    <audio id="myAudio" loop>
+        <source src="Welcome_Ramadan.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startApp() {
+            // تشغيل الصوت فور النقر
+            var audio = document.getElementById("myAudio");
+            audio.play();
+
+            // توجيه المستخدم بعد ثانية واحدة ليعطي فرصة للصوت أن يبدأ
+            setTimeout(function() {
+                window.location.href = "https://aibcbecb7115.pinet.com/";
+            }, 1500); 
+        }
+
+        // محاولة تشغيل الصوت عند التحميل (للمتصفحات التي تسمح بذلك)
+        window.onload = function() {
+            var audio = document.getElementById("myAudio");
+            audio.play().catch(function(error) {
+                console.log("بانتظار تفاعل المستخدم لبدء الصوت...");
+            });
+        };
+    </script>
 
 </body>
 </html>
