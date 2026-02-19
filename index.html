@@ -14,7 +14,7 @@
             overflow: hidden;
         }
 
-        /* شاشة الترحيب الأولية */
+        /* شاشة الترحيب */
         #welcome-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, var(--ramadan-red), var(--pi-purple));
@@ -91,7 +91,7 @@
             // تشغيل الصوت
             audio.play().catch(e => console.log("خطأ في تشغيل الصوت: " + e));
 
-            // إخفاء الترحيب وإظهار المحتوى الرئيسي
+            // إخفاء الترحيب وإظهار المحتوى
             document.getElementById("welcome-overlay").style.opacity = "0";
             setTimeout(() => {
                 document.getElementById("welcome-overlay").style.display = "none";
@@ -99,8 +99,6 @@
                 main.style.display = "flex";
                 setTimeout(() => { main.style.opacity = "1"; }, 50);
             }, 500);
-
-            // تم حذف كود setTimeout الخاص بالتحويل التلقائي بناءً على طلبك
         }
     </script>
 </body>
