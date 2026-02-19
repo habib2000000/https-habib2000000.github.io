@@ -11,20 +11,32 @@
             font-family: 'Cairo', sans-serif; background-color: #f8f9fa; 
             margin: 0; display: flex; flex-direction: column; 
             align-items: center; justify-content: center; min-height: 100vh; 
-            overflow: hidden; cursor: pointer;
+            overflow: hidden;
         }
 
-        /* شاشة الترحيب (Overlay) */
+        /* شاشة الترحيب الأولية */
         #welcome-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--pi-purple), #7a01bb);
+            background: linear-gradient(135deg, var(--ramadan-red), var(--pi-purple));
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 2000; transition: transform 0.6s ease-in-out, opacity 0.5s;
-            color: white; text-align: center;
+            z-index: 2000; transition: 0.5s; color: white; text-align: center;
         }
 
-        .welcome-title { font-size: 2.8rem; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
-        .welcome-sub { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
+        .welcome-title { font-size: 2.5rem; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+
+        .play-btn {
+            background: var(--gold); color: #8e0e14; border: none;
+            padding: 15px 45px; border-radius: 50px; font-size: 1.6rem;
+            font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+        .play-btn:active { transform: scale(0.9); }
+
+        /* المحتوى الرئيسي */
+        #main-content { 
+            display: none; opacity: 0; transition: opacity 1s; 
+            width: 100%; flex-direction: column; align-items: center; 
+        }
 
         .ramadan-banner { 
             position: fixed; top: 0; width: 100%; background: var(--ramadan-red); 
@@ -39,31 +51,33 @@
         .hero-area { background: var(--pi-purple); color: white; padding: 50px 20px; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; }
         .btn-container { padding: 40px 20px; }
         .btn-main { display: block; width: 100%; background: linear-gradient(45deg, #bc13fe, #7a01bb); color: white; text-decoration: none; padding: 20px; border-radius: 40px; font-size: 1.4rem; font-weight: bold; border: none; box-shadow: 0 8px 20px rgba(122, 1, 187, 0.3); }
-        .footer { padding-bottom: 25px; font-size: 0.85rem; color: #888; }
+        .footer { padding: 20px; font-size: 0.85rem; color: #888; }
     </style>
 </head>
-<body onclick="launchApp()">
+<body>
 
     <div id="welcome-overlay">
-        <h1 class="welcome-title">🌟 أهلاً بك يا بطل!</h1>
-        <p class="welcome-sub">جاري تحضير تجربة Learning Joy AI...</p>
-        <div style="margin-top: 30px; font-size: 0.9rem;">(انقر في أي مكان للبدء)</div>
+        <h1 class="welcome-title">كل عام وحضراتكم بخير 🌙</h1>
+        <p style="margin-bottom: 20px; opacity: 0.9;">اضغط على زر التشغيل لبدء التجربة</p>
+        <button class="play-btn" onclick="startApp()">تشغيل ▶️</button>
     </div>
 
-    <div class="ramadan-banner">
-        🌙 رمضان كريم - متبقي 39 يوم على الشهر الفضيل
-    </div>
+    <div id="main-content">
+        <div class="ramadan-banner">
+            🌙 رمضان كريم - متبقي 39 يوم على الشهر الفضيل
+        </div>
 
-    <div class="main-card">
-        <div class="hero-area">
-            <h1>Learning Joy AI</h1>
-            <p>Official Pi Network App</p>
+        <div class="main-card">
+            <div class="hero-area">
+                <h1>Learning Joy AI</h1>
+                <p>Official Pi Network App</p>
+            </div>
+            <div class="btn-container">
+                <p style="color: #555; margin-bottom: 25px;">استمتع بالأجواء الرمضانية الهادئة</p>
+                <a href="https://aibcbecb7115.pinet.com/" class="btn-main">دخول التطبيق الآن 🚀</a>
+            </div>
+            <div class="footer">تطوير: habib2000000 <br> جيش رواد PI network ⚡</div>
         </div>
-        <div class="btn-container">
-            <p style="color: #555; margin-bottom: 25px;">استمتع بالأجواء الرمضانية.. سيتم الدخول تلقائياً بعد دقيقة</p>
-            <button class="btn-main">دخول التطبيق 🚀</button>
-        </div>
-        <div class="footer">تطوير: habib2000000 <br> جيش رواد PI network ⚡</div>
     </div>
 
     <audio id="bgMusic" loop preload="auto">
@@ -72,25 +86,21 @@
 
     <script>
         var audio = document.getElementById("bgMusic");
-        var appStarted = false;
 
-        function launchApp() {
-            if (!appStarted) {
-                // تشغيل الصوت
-                audio.play().catch(e => console.log(e));
+        function startApp() {
+            // تشغيل الصوت
+            audio.play().catch(e => console.log("خطأ في تشغيل الصوت: " + e));
 
-                // إخفاء الترحيب
-                var overlay = document.getElementById("welcome-overlay");
-                overlay.style.opacity = "0";
-                overlay.style.transform = "translateY(-100%)";
+            // إخفاء الترحيب وإظهار المحتوى الرئيسي
+            document.getElementById("welcome-overlay").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("welcome-overlay").style.display = "none";
+                var main = document.getElementById("main-content");
+                main.style.display = "flex";
+                setTimeout(() => { main.style.opacity = "1"; }, 50);
+            }, 500);
 
-                appStarted = true;
-
-                // التوجيه للرابط الصحيح بعد دقيقة واحدة (60000 مللي ثانية)
-                setTimeout(function() {
-                    window.location.href = "https://aibcbecb7115.pinet.com/";
-                }, 60000); 
-            }
+            // تم حذف كود setTimeout الخاص بالتحويل التلقائي بناءً على طلبك
         }
     </script>
 </body>
