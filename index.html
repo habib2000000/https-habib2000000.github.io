@@ -23,7 +23,7 @@
             color: white; text-align: center;
         }
 
-        .welcome-title { font-size: 2.8rem; margin: 0; }
+        .welcome-title { font-size: 2.8rem; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
         .welcome-sub { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
 
         .ramadan-banner { 
@@ -60,7 +60,7 @@
             <p>Official Pi Network App</p>
         </div>
         <div class="btn-container">
-            <p style="color: #555; margin-bottom: 25px;">انقر لتفعيل النظام والدخول</p>
+            <p style="color: #555; margin-bottom: 25px;">استمتع بالأجواء الرمضانية.. سيتم الدخول تلقائياً</p>
             <button class="btn-main">دخول التطبيق 🚀</button>
         </div>
         <div class="footer">تطوير: habib2000000 <br> جيش رواد PI network ⚡</div>
@@ -76,12 +76,8 @@
 
         function launchApp() {
             if (!appStarted) {
-                // محاولة تشغيل الصوت
-                audio.play().then(function() {
-                    console.log("بدأ تشغيل الصوت بنجاح");
-                }).catch(function(error) {
-                    console.log("فشل تشغيل الصوت: " + error);
-                });
+                // تشغيل الصوت
+                audio.play().catch(e => console.log(e));
 
                 // إخفاء الترحيب
                 var overlay = document.getElementById("welcome-overlay");
@@ -90,10 +86,10 @@
 
                 appStarted = true;
 
-                // التوجيه للرابط الصحيح
+                // التوجيه للرابط الصحيح بعد 30 ثانية (30000 مللي ثانية)
                 setTimeout(function() {
                     window.location.href = "https://aibcbecb7115.pinet.com/";
-                }, 3500);
+                }, 30000); 
             }
         }
     </script>
