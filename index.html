@@ -13,14 +13,18 @@
             align-items: center; justify-content: center; min-height: 100vh; 
             overflow: hidden; cursor: pointer;
         }
-        
-        /* رسالة الترحيب المنبثقة */
+
+        /* شاشة الترحيب (Overlay) */
         #welcome-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(84, 29, 114, 0.95);
+            background: linear-gradient(135deg, var(--pi-purple), #7a01bb);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 2000; transition: 0.5s; color: white; text-align: center;
+            z-index: 2000; transition: transform 0.6s ease-in-out, opacity 0.5s;
+            color: white; text-align: center;
         }
+
+        .welcome-title { font-size: 2.8rem; margin: 0; }
+        .welcome-sub { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
 
         .ramadan-banner { 
             position: fixed; top: 0; width: 100%; background: var(--ramadan-red); 
@@ -28,27 +32,22 @@
         }
 
         .main-card { 
-            width: 90%; max-width: 400px; background: white; border-radius: 30px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; text-align: center; 
+            width: 90%; max-width: 400px; background: white; border-radius: 35px; 
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15); overflow: hidden; text-align: center; 
         }
 
-        .hero-area { background: var(--pi-purple); color: white; padding: 40px 20px; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; }
+        .hero-area { background: var(--pi-purple); color: white; padding: 50px 20px; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; }
         .btn-container { padding: 40px 20px; }
-        .btn-main { 
-            display: block; width: 100%; background: linear-gradient(45deg, #bc13fe, #7a01bb); 
-            color: white; text-decoration: none; padding: 20px; border-radius: 40px; 
-            font-size: 1.4rem; font-weight: bold; transition: 0.3s; border: none;
-            box-shadow: 0 8px 20px rgba(122, 1, 187, 0.3);
-        }
-        .footer { padding: 20px; font-size: 0.8rem; color: #777; }
+        .btn-main { display: block; width: 100%; background: linear-gradient(45deg, #bc13fe, #7a01bb); color: white; text-decoration: none; padding: 20px; border-radius: 40px; font-size: 1.4rem; font-weight: bold; border: none; box-shadow: 0 8px 20px rgba(122, 1, 187, 0.3); }
+        .footer { padding-bottom: 25px; font-size: 0.85rem; color: #888; }
     </style>
 </head>
-<body onclick="startExperience()">
+<body onclick="launchApp()">
 
     <div id="welcome-overlay">
-        <h1 style="font-size: 2.5rem; margin-bottom: 10px;">أهلاً بك يا بطل! 🌟</h1>
-        <p style="font-size: 1.2rem;">جاري تحضير تجربة Learning Joy AI...</p>
-        <p style="margin-top: 20px; opacity: 0.7;">(انقر في أي مكان للبدء)</p>
+        <h1 class="welcome-title">🌟 أهلاً بك يا بطل!</h1>
+        <p class="welcome-sub">جاري تحضير تجربة Learning Joy AI...</p>
+        <div style="margin-top: 30px; font-size: 0.9rem;">(انقر في أي مكان للبدء)</div>
     </div>
 
     <div class="ramadan-banner">
@@ -60,46 +59,43 @@
             <h1>Learning Joy AI</h1>
             <p>Official Pi Network App</p>
         </div>
-
         <div class="btn-container">
-            <p style="color: #666; margin-bottom: 25px;">تطبيق الإيكوسيستيم المعتمد</p>
-            <button class="btn-main">دخول التطبيق الفعلي 🚀</button>
+            <p style="color: #555; margin-bottom: 25px;">انقر لتفعيل النظام والدخول</p>
+            <button class="btn-main">دخول التطبيق 🚀</button>
         </div>
-
-        <div class="footer">
-            تطوير: **habib2000000** <br>
-            جيش رواد PI network
-        </div>
+        <div class="footer">تطوير: habib2000000 <br> جيش رواد PI network ⚡</div>
     </div>
 
-    <audio id="bgMusic" loop>
-        <source src="Welcome_Ramadan.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop preload="auto">
+        <source src="Welcome%20Ramadan.mp3.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         var audio = document.getElementById("bgMusic");
-        var isStarted = false;
+        var appStarted = false;
 
-        function startExperience() {
-            if (!isStarted) {
-                // تشغيل الصوت
-                audio.play().catch(e => console.log("تحتاج نقرة للبدء"));
-                
-                // إخفاء رسالة الترحيب
-                document.getElementById("welcome-overlay").style.opacity = "0";
-                setTimeout(() => {
-                    document.getElementById("welcome-overlay").style.display = "none";
-                }, 500);
+        function launchApp() {
+            if (!appStarted) {
+                // محاولة تشغيل الصوت
+                audio.play().then(function() {
+                    console.log("بدأ تشغيل الصوت بنجاح");
+                }).catch(function(error) {
+                    console.log("فشل تشغيل الصوت: " + error);
+                });
 
-                isStarted = true;
+                // إخفاء الترحيب
+                var overlay = document.getElementById("welcome-overlay");
+                overlay.style.opacity = "0";
+                overlay.style.transform = "translateY(-100%)";
 
-                // التوجه للتطبيق الفعلي بعد 2 ثانية لسماع الترحيب
+                appStarted = true;
+
+                // التوجيه للرابط الصحيح
                 setTimeout(function() {
                     window.location.href = "https://aibcbecb7115.pinet.com/";
-                }, 2500);
+                }, 3500);
             }
         }
     </script>
-
 </body>
 </html>
